@@ -1,75 +1,91 @@
-# Analyse packages œnotourisme — Tour de l’Évêque 2026
+# Analyse packages — avec **6 à 8 verres** (coût vin réel)
 
-Sources : `EXPERIENCES ET AUTRES.xlsx` (Céline), coûts food terrain, concurrence Var / Winalist / Smartbox.
+## Réponse courte
 
-## Concurrence (benchmark)
+**Avant : non.** Le premier modèle mettait ~1,50 € « food » et **presque zéro vin** — faux pour le caveau TE.
 
-| Canal / type | Prix repère |
-|--------------|-------------|
-| Domaine (historique) visite+dégust. | 10 € |
-| OT MPM | 10 € (−10 % comm.) |
-| Cap Adrénaline | 12 € |
-| Winalist | 14 € |
-| Smartbox visite+bouteille / 2 | 29,99 € |
-| Smartbox initiation+btl / 2 | 59,99 € |
-| Vélo + vin Aix | ~60 € |
-| Pique-nique vignes (Bordeaux type) | ~74 € groupe / pax |
-| Light lunch prouvé (Azur Wine Tour) | **28 € / pax** |
+**Maintenant : oui.** Le coût vin est calé sur **6–8 verres / personne** (moyenne **7 × 4 cl**).
 
-## Coûts food réels (terrain)
+Fichier code : `src/lib/wine-cost.ts` + champs `wineCostPerPerson` dans `packages.ts`.
 
-| Élément | Coût approx. |
-|---------|----------------|
-| Planche 2 pax (charcuterie, chèvre, tartinade, pain, olives) | ~17 € → **8,5 €/pax** |
-| Light lunch 6 pax (exemple juin) | 58,54 € achat / 168 € CA → **marge 65 %** |
-| Planche à 12 €/pax (Dartigunave 9 pax) | 74,5 € coût / 108 € CA → **marge 31 % ❌ trop bas** |
+---
 
-**Règle** : ne jamais revendre une planche food sous **25 €** ; cible marge food+guide **≥ 55 %**.
+## Formule vin
 
-## Grille proposée (en ligne)
+```
+volume (cl)     = nb_verres × 4 cl
+fraction btl    = volume / 75
+COGS (€)        = fraction × 8 €   ← prix de revient moyen bouteille
+Opportunité (€) = fraction × 16 €  ← valeur caveau moyenne (ventes perdues)
+Blended (€)     = 60 % opportunité + 40 % COGS  ← utilisé pour la marge
+```
 
-| Formule | Prix vente | Coût food+guide /pax | Marge brute |
-|---------|------------|----------------------|-------------|
-| Visite & dégustation | **12 €** | ~4 € | ~67 % |
-| Initiation | **15 €** | ~5 € | ~67 % |
-| Fromage | **18 €** | ~8 € | ~56 % |
-| Épicurienne (planche) | **28 €** | ~13,5 € | ~52 % |
-| Pique-nique pied | **38 €** | ~17 € | ~55 % |
-| Pique-nique vélo | **42 €** | ~17,5 € | ~58 % |
-| Pack duo + bouteille | **55 € / 2** | ~4 € + bouteille ~8–12 | ~55–65 % |
-| **Option artiste LAH** | **+18 €/pax** | ~0 food | temps artiste |
-| Cadeau surprise duo | 30 € flat | produit stock | variable |
+| Verres | Volume | Bouteilles | COGS (8 €) | Opportunité (16 €) | **Blended (utilisé)** |
+|--------|--------|------------|------------|--------------------|------------------------|
+| 6 | 24 cl | 0,32 | 2,56 € | 5,12 € | **~4,10 €** |
+| **7 (moy.)** | **28 cl** | **0,37** | **2,99 €** | **5,97 €** | **~4,78 €** |
+| 8 | 32 cl | 0,43 | 3,41 € | 6,83 € | **~5,46 €** |
 
-### Évolutions vs grille Céline 2026
+Si les verres sont plus généreux (**5 cl**) : × 1,25 sur tout le tableau  
+→ moyenne 7 verres ≈ **6,0 €** blended / pax.
 
-- Découverte 10 → **12 €** (aligné milieu de marché, toujours sous Winalist 14)
-- Initiation 12 → **15 €**
-- Fromage 15 → **18 €**
-- Apéro 25 → **28 €** (validé par vente réelle Azur)
-- Duo+btl 50 → **55 € / 2** (hausse bouteille + inflation)
-- **Nouveaux** : picnic pied/vélo + option artiste privée
+Si le mix est plus « prestige » (bouteille retail 22 €) : encore +30–40 %.
 
-## Pique-nique — composition panier (2 pax)
+> **À ajuster avec PF** : prix de revient réel + prix caveau moyen des cuvées versées.  
+> Variables dans `wine-cost.ts` : `bottleCostCogs`, `bottleRetailCaveau`, `pourCl`, `glassesAvg`.
 
-- Charcuterie assortie ~6,5 €
-- 1 chèvre Cabrière 4,5 €
-- 1 tartinade 5,95 €
-- Pain + fruit ~4 €
-- Emballage / serviettes ~1 €  
-**≈ 22 € / 2 = 11 €/pax** → vente 38 € laisse ~27 €/pax pour temps + marge.
+---
 
-Carte itinéraire : PDF auto + 1 feuille A4 au départ (~0,10 €).
+## Coût total / pax (vin + food + guide)
 
-## Option artiste
+| Formule | Vin (6–8 v.) | Food | Guide | **Coût total** | **Prix vente** | **Marge** |
+|---------|--------------|------|-------|----------------|----------------|-----------|
+| Visite & dégustation | ~4,8 € | 0 | 2,5 | **~7,3 €** | **15 €** | ~51 % |
+| Initiation | ~5,5 € (8 v.) | 0 | 3,5 | **~9,0 €** | **18 €** | ~50 % |
+| Fromage | ~4,8 € | 5,5 | 2,5 | **~12,8 €** | **22 €** | ~42 % |
+| Épicurienne | ~4,8 € | 10,5 | 3,0 | **~18,3 €** | **32 €** | ~43 % |
+| Picnic pied | ~0,7 € (1 verre) | 15 | 2,0 | **~17,7 €** | **38 €** | ~53 % |
+| Picnic vélo | ~0,7 € | 15 | 2,5 | **~18,2 €** | **42 €** | ~57 % |
+| Duo + bouteille / pax | ~4,8 + **~5** (½ btl offerte) | 0 | 2,5 | **~12,3 €** | **32,5 €** (65/2) | ~62 % |
 
-+18 €/pax, min 2, max 12. Si artiste absente → remboursement option intégral (affiché checkout). Ne pas vendre comme “garantie présence” sans calendrier LAH.
+### Anciens prix (trop bas une fois le vin compté)
 
-## RSVIN
+| | Prix old | Coût réel vin inclus | Marge réelle |
+|--|----------|----------------------|--------------|
+| Découverte | 10–12 € | ~7,3 € | **~27–39 %** ❌ |
+| Épicurienne | 25–28 € | ~18,3 € | **~27–35 %** ❌ |
 
-Aucune plateforme publique **RSVIN** avec API/widget trouvée.  
-**Stack retenue** : Next.js + **Stripe Checkout** (CB, Apple Pay) + emails Stripe.  
-Alternative ultérieure : widget Winalist en iframe + même design shell.
+→ D’où le **rehaussement** de la grille en ligne (15 / 18 / 22 / 32 / 65 duo).
 
-## WordPress
+---
 
-Bouton header + iframe `/embed` ou lien `resa.toureveque.com` (voir `docs/WORDPRESS.md`).
+## Dégustation gratuite (caveau sans résa)
+
+Toujours possible commercialement (drive ventes bouteilles).  
+**Coût caché** : ~4,8–5,5 € de vin blended / pax qui ne vient **que** de la conversion bouteille.  
+À suivre : taux d’achat post-dégust. Si < 1 bouteille / 3 visiteurs → la gratuite « pure » plombe ; la **visite payante 15 €** protège mieux.
+
+---
+
+## Food (inchangé, déjà dans le modèle)
+
+- Planche 2 pax terrain ≈ 17 € → **~8,5 €/pax**  
+- Light lunch Azur 28 €/pax prouvé (marge 65 % food seul)  
+- **Interdit** : planche à 12 €/pax (Dartigunave = 31 % marge)
+
+---
+
+## Option artiste (+18 €)
+
+N’ajoute **pas** de verres (même 6–8). C’est du temps / cadre privé LAH.  
+Si artiste absente → remboursement option.
+
+---
+
+## Checklist validation PF
+
+- [ ] Confirmer **cl par verre** (4 ou 5)
+- [ ] Confirmer **nb moyen** 6 / 7 / 8
+- [ ] Donner **prix de revient** moyen des cuvées dégustées
+- [ ] Donner **prix caveau** moyen (opportunité)
+- [ ] Valider grille 15 / 18 / 22 / 32 / 38 / 42 / 65
