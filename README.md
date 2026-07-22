@@ -2,11 +2,18 @@
 
 App de réservation en ligne (Next.js 15 · Stripe · Vercel), style aligné sur [toureveque.com](https://www.toureveque.com/) (Josefin Sans, crème `#f7f3ec`, accent sable `#e3d5c1`).
 
-**Repo cible : [github.com/Lilouoz/toureveque](https://github.com/Lilouoz/toureveque)**  
-(Projet château **uniquement** — **pas** ArtStandards.)
+## GitHub — règle d’or
 
-Staging technique temporaire : [inf-opc/toureveque](https://github.com/inf-opc/toureveque)  
-→ transfer vers Lilouoz : voir [`docs/GITHUB-LILOUOZ.md`](docs/GITHUB-LILOUOZ.md)
+| | |
+|--|--|
+| **Seul repo GitHub château** | **[Lilouoz/toureveque](https://github.com/Lilouoz/toureveque)** |
+| Compte | **Lilouoz** |
+| Contenu | **Uniquement** sujets Château La Tour de l’Évêque |
+| **Interdit ici** | ArtStandards, autres projets LAH hors domaine |
+
+Périmètre détaillé : [`docs/SCOPE.md`](docs/SCOPE.md) · Transfer : [`docs/GITHUB-LILOUOZ.md`](docs/GITHUB-LILOUOZ.md)
+
+> Staging temporaire (en attendant création/transfer Lilouoz) : [inf-opc/toureveque](https://github.com/inf-opc/toureveque) — à supprimer après migration.
 
 ## Fonctionnalités
 
