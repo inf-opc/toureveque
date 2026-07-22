@@ -2,8 +2,11 @@
 
 App de réservation en ligne (Next.js 15 · Stripe · Vercel), style aligné sur [toureveque.com](https://www.toureveque.com/) (Josefin Sans, crème `#f7f3ec`, accent sable `#e3d5c1`).
 
-**Repo :** [github.com/inf-opc/toureveque](https://github.com/inf-opc/toureveque)  
-→ à transférer vers [Lilouoz/toureveque](https://github.com/Lilouoz/toureveque) (invitation collab **Lilouoz** envoyée ; accepter puis *Settings → Transfer ownership*).
+**Repo cible : [github.com/Lilouoz/toureveque](https://github.com/Lilouoz/toureveque)**  
+(Projet château **uniquement** — **pas** ArtStandards.)
+
+Staging technique temporaire : [inf-opc/toureveque](https://github.com/inf-opc/toureveque)  
+→ transfer vers Lilouoz : voir [`docs/GITHUB-LILOUOZ.md`](docs/GITHUB-LILOUOZ.md)
 
 ## Fonctionnalités
 
