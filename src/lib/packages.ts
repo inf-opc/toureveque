@@ -6,6 +6,7 @@
  * Règle : marge brute cible ≥ 50 % en mode blended · planche food jamais < 25 €.
  */
 
+import { FOOD_COST } from "./food-bom";
 import {
   WINE_COST_AVG,
   WINE_COST_MAX,
@@ -131,12 +132,12 @@ export const PACKAGES: ExperiencePackage[] = [
   {
     id: "fromage",
     name: "Visite, dégustation & fromage",
-    tagline: "Accords doux",
+    tagline: "Accords doux · plateau généreux",
     description:
-      "Visite + dégustation 6–8 verres accompagnée de fromages frais La Cabrière.",
+      "Visite + dégustation 6–8 verres et plateau fromages frais La Cabrière — 3 chèvres pour 2 personnes (jamais en dessous de 2).",
     durationMin: 75,
-    pricePerPerson: 22,
-    foodCostPerPerson: 5.5,
+    pricePerPerson: 26,
+    foodCostPerPerson: FOOD_COST.fromagePerPerson,
     wineCostPerPerson: WINE_FULL,
     guideCostPerPerson: 2.5,
     glassesIncluded: "6–8 verres",
@@ -145,20 +146,21 @@ export const PACKAGES: ExperiencePackage[] = [
     slots: SLOTS_VISIT,
     includes: [
       "Visite + dégustation 6–8 verres",
-      "Fromages frais locaux",
-      "Pain & accompagnements",
+      "3 chèvres frais / 2 pers. (min. 2)",
+      "Pain, miel & présentation soignée",
     ],
     imageHint: "fromage",
   },
   {
     id: "epicurienne",
     name: "Dégustation épicurienne",
-    tagline: "Planche apéritive du terroir",
+    tagline: "Planche généreuse du terroir",
     description:
-      "Visite des caves, 6–8 verres, puis planche : charcuteries, fromages, tartinades, pains, olives.",
+      "Visite, 6–8 verres, planche abondante : charcuterie, 3 chèvres / 2 pers., 2 tartinades, pains, olives, crudités — beau, bon, présentable.",
     durationMin: 90,
-    pricePerPerson: 32,
-    foodCostPerPerson: 10.5,
+    /** Coût food ~24 €/pax + vin ~5 + guide 3 → vente 48 € ≈ 40 % marge */
+    pricePerPerson: 48,
+    foodCostPerPerson: FOOD_COST.epicuriennePerPerson,
     wineCostPerPerson: WINE_FULL,
     guideCostPerPerson: 3,
     glassesIncluded: "6–8 verres",
@@ -170,20 +172,20 @@ export const PACKAGES: ExperiencePackage[] = [
     includes: [
       "Visite caves",
       "Dégustation 6–8 verres",
-      "Planche apéro complète",
-      "Produits artisans locaux",
+      "Planche généreuse (3 chèvres / 2 pers.)",
+      "Charcuterie, 2 tartinades, pains, olives",
     ],
     imageHint: "apero",
   },
   {
     id: "picnic-pied",
     name: "Pique-nique dans les vignes",
-    tagline: "À pied · panier & carte",
+    tagline: "À pied · panier généreux",
     description:
-      "Panier pique-nique, carte d’itinéraire dans les vignes, 1 verre d’accueil. Option : dégustation complète au retour (+forfait découverte).",
+      "Panier copieux (min. 2 chèvres / 2 pers.), carte d’itinéraire, 1 verre d’accueil. Pas de panier « maigre ».",
     durationMin: 150,
-    pricePerPerson: 38,
-    foodCostPerPerson: 15,
+    pricePerPerson: 42,
+    foodCostPerPerson: FOOD_COST.picnicPerPerson,
     wineCostPerPerson: WINE_WELCOME,
     guideCostPerPerson: 2,
     glassesIncluded: "1 verre d’accueil",
@@ -193,9 +195,9 @@ export const PACKAGES: ExperiencePackage[] = [
     badge: "Nouveau",
     featured: true,
     includes: [
-      "Panier pique-nique (2 pax min)",
+      "Panier généreux (2 chèvres min. / 2 pers.)",
+      "Charcuterie, tartinade, pain, fruit",
       "Carte itinéraire vignes (PDF + papier)",
-      "Couverture & vaisselle chic",
       "1 verre de bienvenue au départ",
     ],
     imageHint: "picnic",
@@ -203,12 +205,12 @@ export const PACKAGES: ExperiencePackage[] = [
   {
     id: "picnic-velo",
     name: "Pique-nique à vélo",
-    tagline: "Accueil Vélo · vignes",
+    tagline: "Accueil Vélo · panier généreux",
     description:
-      "Même panier + itinéraire cyclable (label Accueil Vélo). 1 verre d’accueil. Vélos non fournis.",
+      "Même panier généreux + itinéraire cyclable (label Accueil Vélo). Vélos non fournis.",
     durationMin: 180,
-    pricePerPerson: 42,
-    foodCostPerPerson: 15,
+    pricePerPerson: 46,
+    foodCostPerPerson: FOOD_COST.picnicPerPerson,
     wineCostPerPerson: WINE_WELCOME,
     guideCostPerPerson: 2.5,
     glassesIncluded: "1 verre d’accueil",
@@ -217,9 +219,8 @@ export const PACKAGES: ExperiencePackage[] = [
     slots: SLOTS_PICNIC,
     badge: "Nouveau",
     includes: [
-      "Panier pique-nique",
+      "Panier généreux (2 chèvres min. / 2 pers.)",
       "Carte itinéraire vélo",
-      "Point d’eau / consignes Accueil Vélo",
       "1 verre de bienvenue",
       "Liste loueurs partenaires",
     ],

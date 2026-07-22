@@ -67,11 +67,48 @@ Toujours possible commercialement (drive ventes bouteilles).
 
 ---
 
-## Food (inchangé, déjà dans le modèle)
+## Food — standard « pas pauvrette » (Lilou)
 
-- Planche 2 pax terrain ≈ 17 € → **~8,5 €/pax**  
-- Light lunch Azur 28 €/pax prouvé (marge 65 % food seul)  
-- **Interdit** : planche à 12 €/pax (Dartigunave = 31 % marge)
+**Règle** : plateau **2 pax = min. 2 chèvres, cible 3** (Cabrière 4,50 €).  
+Jamais 1 chèvre pour 2. Planche / panier **généreux, beau, présentable**.
+
+Nomenclature code : `src/lib/food-bom.ts`
+
+### Fromage 2 pax (3 chèvres)
+
+| Ligne | € |
+|-------|---|
+| 3 × chèvre 4,50 | 13,50 |
+| Pain + miel | 4,50 |
+| **Total 2 pax** | **18 €** → **9 €/pax** |
+| **Prix vente** | **26 €/pax** |
+
+### Planche épicurienne 2 pax (généreuse)
+
+| Ligne | € |
+|-------|---|
+| Charcuterie généreuse (pas le mini 6,50) | 12 |
+| **3 chèvres** | 13,50 |
+| 2 tartinades | 11,90 |
+| Pains + olives + crudités/fruit + prés. | ~11 |
+| **Total 2 pax** | **~48 €** → **~24 €/pax** |
+| + vin ~4,8 + guide 3 | **coût ~32 €/pax** |
+| **Prix vente** | **48 €/pax** (~40 % marge) |
+
+Ancien modèle 1 chèvre + charcut 6,50 = panier **chiche** et faux coût 10,50 €/pax.
+
+### Picnic 2 pax
+
+| | |
+|--|--|
+| Min. **2 chèvres** + charcut + tartinade + pain + fruit | **~35 € / 2** → **~17,5 €/pax** |
+| Vente | **42 €** pied · **46 €** vélo |
+
+### Interdits
+
+- 1 chèvre pour 2 pax  
+- Charcuterie « mini » 6,50 € seule sur planche payante  
+- Planche food vendue **12 €/pax** (Dartigunave = catastrophe marge + image)
 
 ---
 
